@@ -1,0 +1,30 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && apt-get install -y wget git build-essential zlib1g-dev
+
+RUN wget http://ftp.gnu.org/gnu/m4/m4-latest.tar.gz -O /root/m4latest.tar.gz && \
+	tar -xf /root/m4latest.tar.gz -C /root && \
+	rm -f /root/m4latest.tar.gz && \
+	cd /root/m4* && \
+	./configure && make && make install && \
+	cd / && rm -rf /root/m4*
+
+RUN wget http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz -O /root/aulatest.tar.gz && \
+	tar -xf /root/aulatest.tar.gz -C /root && \
+	rm -f /root/aulatest.tar.gz && \
+	cd /root/autoconf* && \
+	./configure && make && make install && \
+	cd / && rm -rf /root/autoconf*
+
+RUN wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.gz -O /root/boost.tar.gz && \
+	tar -xf /root/boost.tar.gz -C /root && \
+	rm -f /root/boost.tar.gz && \
+	cd /root/boost* && \
+	./bootstrap && ./b2 && ./b2 install && \
+	cd / && rm -rf /root/boost*
+
+RUN cd /root && git clone https://github.com/ParBLiSS/FastANI.git && \
+	cd FastANI && ./bootstrap.sh && ./configure --with-boost=/usr/local && make
+
+WORKDIR /root/FastANI
+
