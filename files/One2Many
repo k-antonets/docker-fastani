@@ -1,4 +1,4 @@
-FROM fastANI:latest
+FROM fastani:latest
 
 COPY one2many.sh /root/FastANI
 
