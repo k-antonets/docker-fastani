@@ -26,5 +26,11 @@ RUN wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.
 RUN cd /root && git clone https://github.com/ParBLiSS/FastANI.git && \
 	cd FastANI && ./bootstrap.sh && ./configure --with-boost=/usr/local && make
 
+COPY expand_output.sh /root/FastANI
+COPY prepare_list.sh /root/FastANI
+COPY get_refs.sh /root/FastANI
+
+RUN chmod +x /root/FastANI/expand_output.sh /root/FastANI/prepare_list.sh /root/FastANI/get_refs.sh
+
 WORKDIR /root/FastANI
 

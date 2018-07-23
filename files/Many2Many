@@ -1,0 +1,7 @@
+FROM fastANI:latest
+
+COPY many2many.sh /root/FastANI
+
+RUN chmod +x /root/FastANI/many2many.sh
+
+CMD ./many2many.sh
