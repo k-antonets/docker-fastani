@@ -20,7 +20,7 @@ RUN wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.
 	tar -xf /root/boost.tar.gz -C /root && \
 	rm -f /root/boost.tar.gz && \
 	cd /root/boost* && \
-	./bootstrap && ./b2 && ./b2 install && \
+	./bootstrap.sh && ./b2 && ./b2 install && \
 	cd / && rm -rf /root/boost*
 
 RUN cd /root && git clone https://github.com/ParBLiSS/FastANI.git && \
