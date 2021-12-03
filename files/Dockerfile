@@ -16,7 +16,7 @@ RUN wget http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz -O /root/aulates
 	./configure && make && make install && \
 	cd / && rm -rf /root/autoconf*
 
-RUN wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.gz -O /root/boost.tar.gz && \
+RUN wget https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.gz -O /root/boost.tar.gz && \
 	tar -xf /root/boost.tar.gz -C /root && \
 	rm -f /root/boost.tar.gz && \
 	cd /root/boost* && \
