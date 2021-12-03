@@ -6,10 +6,10 @@
 
 cd /root/FastANI
 
-./fastANI -ql ./query.list --rl ./ref.list -o /output/fastANI.out
+./fastANI --ql ./query.list --rl ./ref.list -o /output/fastANI.out -t 60
 
 ./expand_output.sh /output/fastANI.out > /output/fastANI.out.expanded
 
 while read ifile; do
-	./get_refs.sh $ifile /output/fastANI.out >> /output/fastANI.out.refs
+	./get_refs.sh $ifile /output/fastANI.out.expanded >> /output/fastANI.out.refs
 done < /root/FastANI/query.list
